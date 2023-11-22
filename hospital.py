@@ -101,7 +101,9 @@ class idk:
         return b"This is bytes okay?"
 
     def __format__(self, __format_spec: str) -> str:
-        return __format_spec.format(price=49)
+        return __format_spec.format(self.num)
     
    
 t = idk()
+txt = "this is {:>8.2f}"
+print(format(t,txt))
