@@ -8,8 +8,8 @@ class person:
         self.height = height
 
     def __str__(self) -> str:
-        s = f"Name: {self.first_name} {self.last_name}"
-
+        s = f"Name: {self.first_name} {self.last_name}\n"
+        s += f"Age: {self.age}\nWeight: {self.weight}\nHeight: {self.height}"
         return s
 
     def __lt__(self, other: object) -> bool:
