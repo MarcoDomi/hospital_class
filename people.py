@@ -22,8 +22,16 @@ class person:
         else:
             return self.first_name > other.first_name
         
+    def __getattr__(self, __name):
+        if __name == "full_name":
+            return f"{self.first_name} {self.last_name}"
+        else:
+            return AttributeError(f"'{__name}' is not an attribute")
+
+
 class doctor(person):
-    '''represents a doctor'''
+    """represents a doctor"""
+
     def __init__(self, first_name, last_name, age, specialty) -> None:
         super().__init__(first_name, last_name, age)
         self.specialty = specialty
@@ -32,20 +40,42 @@ class doctor(person):
         s = super().__str__()
         s += f"\nSpecialty: {self.specialty}"
         return s
+
+    def __lt__(self, other: object) -> bool:
+        return super().__lt__(other)
+
+    def __gt__(self, other: object) -> bool:
+        return super().__gt__(other)
     
+    def __getattr__(self, __name):
+        return super().__getattr__(__name)
+
+
 class nurse(person):
-    '''represents a nurse'''
+    """represents a nurse"""
+
     def __init__(self, first_name, last_name, age, type) -> None:
         super().__init__(first_name, last_name, age)
-        self.type = type #registered or advanced
+        self.type = type  # registered or advanced
 
     def __str__(self) -> str:
         s = super().__str__()
         s += f"\nType: {self.type}"
         return s
+
+    def __lt__(self, other: object) -> bool:
+        return super().__lt__(other)
+
+    def __gt__(self, other: object) -> bool:
+        return super().__gt__(other)
     
+    def __getattr__(self, __name):
+        return super().__getattr__(__name)
+
+
 class patient(person):
-    '''represents a patient'''
+    """represents a patient"""
+
     def __init__(self, first_name, last_name, age, height, weight, ailment) -> None:
         super().__init__(first_name, last_name, age)
         self.height = height
@@ -56,3 +86,12 @@ class patient(person):
         s = super().__str__()
         s += f"\nHeight: {self.height}\nWeight: {self.weight}\nAilment: {self.ailment}"
         return s
+
+    def __lt__(self, other: object) -> bool:
+        return super().__lt__(other)
+
+    def __gt__(self, other: object) -> bool:
+        return super().__gt__(other)
+    
+    def __getattr__(self, __name):
+        return super().__getattr__(__name)
