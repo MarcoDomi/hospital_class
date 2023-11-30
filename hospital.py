@@ -21,15 +21,7 @@ class team:
         s += [border]
 
         return "\n".join(s)
-
-
-doc_file = open("txt_files/doctors.txt", "rt")
-
-line = doc_file.readline()
-line_list = line.split(" ")
-
-print(line_list[:2])
-print(" ".join(line_list[:2]))
-print(line_list[2:])
-# for line in doc_file:
-#   print(line)
+    
+    class hospital:
+        '''represents a hospital'''
+        pass
