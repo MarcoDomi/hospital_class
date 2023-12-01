@@ -75,7 +75,7 @@ class nurse(person):
 
 class patient(person):
     """represents a patient"""
-
+    
     def __init__(self, first_name, last_name, age, height, weight, ailment) -> None:
         super().__init__(first_name, last_name, age)
         self.height = height

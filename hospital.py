@@ -22,6 +22,16 @@ class team:
 
         return "\n".join(s)
     
+    def add_nurse(self):
+        pass
+
+    def pop_nurse(self):
+        pass
+    
+    def get_team_specialty(self):
+        return self.my_doctor.specialty
+    
+    
     class hospital:
         '''represents a hospital'''
         pass
