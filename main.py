@@ -13,13 +13,13 @@ def get_file_content(file_name):
     return content_list
 
 
-def create_obj(file_names):
+def create_lists(file_names):
+    doctor_list = []
+    nurse_list = []
+    patient_list = []
+
     for f in file_names:
         content_list = get_file_content(f)
-        doctor_list = []
-        nurse_list = []
-        patient_list = []
-
         match f:
             case "doctors.txt":
                 for c in content_list:
@@ -34,6 +34,32 @@ def create_obj(file_names):
     return doctor_list, nurse_list, patient_list
 
 
+def group_nurses(nurse_list):
+    group_size = 3
+    size = len(nurse_list)
+
+    if size <= group_size:
+        return nurse_list
+
+    quot, rem = divmod(size, 3)
+
+    new_size = quot * group_size
+    new_list = nurse_list[:new_size]
+
+    if rem == 0:
+        rem_list = []
+    else:
+        rem_list = nurse_list[-rem:]
+
+    return new_list, rem_list
+
+
 files = ("doctors.txt", "nurses.txt", "patients.txt")
-doctor_list, nurse_list, patient_list = create_obj(files)
-print(doctor_list, nurse_list, patient_list)
+doctor_list, nurse_list, patient_list = create_lists(files)
+
+nurse_obj_list, remaining_nurses = group_nurses(nurse_list)
+# loop thru nurse_obj_list and doctor list
+# create a team obj consisting of 1 doctor and 3 nurses
+# looper thru remaing_nurses list if length is not 0
+# create team obj of 1 doctor and remaining nurses
+# WHAT IF THERE ARE NO MORE DOCTORS BUT THERE ARE STILL NURSES?
