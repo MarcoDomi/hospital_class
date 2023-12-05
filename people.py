@@ -53,10 +53,13 @@ class doctor(person):
 
 class nurse(person):
     """represents a nurse"""
-
+    nurse_num = 0
     def __init__(self, first_name, last_name, age, type) -> None:
         super().__init__(first_name, last_name, age)
         self.type = type  # registered or advanced
+
+        nurse.nurse_num += 1
+        self.id = nurse.nurse_num
 
     def __str__(self) -> str:
         s = super().__str__()
@@ -71,11 +74,14 @@ class nurse(person):
     
     def __getattr__(self, __name):
         return super().__getattr__(__name)
+    
+    def get_id(self):
+        return self.id
 
 
 class patient(person):
     """represents a patient"""
-    
+
     def __init__(self, first_name, last_name, age, height, weight, ailment) -> None:
         super().__init__(first_name, last_name, age)
         self.height = height
