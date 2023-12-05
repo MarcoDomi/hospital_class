@@ -60,8 +60,7 @@ doctor_list, nurse_list, patient_list = create_lists(files)
 nurse_obj_list, remaining_nurses = group_nurses(nurse_list)
 
 t1 = team(doctor_list[0], nurse_obj_list[:3])
-print(t1)
-#print(t1.get_nurse(2))
+print(t1.get_nurse(2))
 
 # loop thru nurse_obj_list and doctor list
 # create a team obj consisting of 1 doctor and 3 nurses

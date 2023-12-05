@@ -30,7 +30,10 @@ class team:
         self.nurse_team[new_nurse.id] = new_nurse
 
     def pop_nurse(self, __nurse_id):
-        self.nurse_team.pop(__nurse_id)
+        try:
+            return self.nurse_team.pop(__nurse_id)
+        except KeyError:
+            print("Nurse not found.")
 
 
     def get_team_specialty(self):
