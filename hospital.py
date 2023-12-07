@@ -82,5 +82,16 @@ class team:
 
     class hospital:
         """represents a hospital"""
+        def __init__(self) -> None:
+            self.patient_list = []
+            self.patients_no_team = []
+            self.teams = ["placeholder"] #first index is used so indexes can match the team number
+            
+        #check patient in 
+        #check pation out
+        #swap nurses between teams
+        #list of nurses w/o team
+        #print patient info 
+        #print team associated with patient
 
         pass

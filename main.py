@@ -33,7 +33,7 @@ def create_lists(file_names):
 
     return doctor_list, nurse_list, patient_list
 
-
+#put nurses in a list that has a length divisible by 3 and any remaining nurses in a separate list
 def group_nurses(nurse_list):
     group_size = 3
     size = len(nurse_list)
@@ -59,9 +59,9 @@ doctor_list, nurse_list, patient_list = create_lists(files)
 
 nurse_obj_list, remaining_nurses = group_nurses(nurse_list)
 
-t1 = team(doctor_list[0], nurse_obj_list[:3])
+#t1 = team(doctor_list[0], nurse_obj_list[:3])
 
-print(t1.__dict__['my_doctor'])
+
 
 # loop thru nurse_obj_list and doctor list
 # create a team obj consisting of 1 doctor and 3 nurses
