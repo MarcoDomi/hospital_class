@@ -33,25 +33,32 @@ def create_lists(file_names):
 
     return doctor_list, nurse_list, patient_list
 
-#put nurses in a list that has a length divisible by 3 and any remaining nurses in a separate list
+
+# put nurses in groups of 3 and any remaining nurses in a separate list
 def group_nurses(nurse_list):
-    group_size = 3
+    GROUP_SIZE = 3
+
     size = len(nurse_list)
 
-    if size <= group_size:
+    if size <= GROUP_SIZE:
         return nurse_list
 
-    quot, rem = divmod(size, 3)
+    num_of_groups, rem = divmod(size, GROUP_SIZE)
 
-    new_size = quot * group_size
+    new_size = num_of_groups * GROUP_SIZE
     new_list = nurse_list[:new_size]
+
+    grouped_list = []
+
+    for _ in range(num_of_groups):
+        grouped_list += [new_list[:GROUP_SIZE]]
 
     if rem == 0:
         rem_list = []
     else:
         rem_list = nurse_list[-rem:]
 
-    return new_list, rem_list
+    return grouped_list, rem_list
 
 
 files = ("doctors.txt", "nurses.txt", "patients.txt")
@@ -59,9 +66,7 @@ doctor_list, nurse_list, patient_list = create_lists(files)
 
 nurse_obj_list, remaining_nurses = group_nurses(nurse_list)
 
-#t1 = team(doctor_list[0], nurse_obj_list[:3])
-
-
+# t1 = team(doctor_list[0], nurse_obj_list[:3])
 
 # loop thru nurse_obj_list and doctor list
 # create a team obj consisting of 1 doctor and 3 nurses
