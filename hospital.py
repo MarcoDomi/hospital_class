@@ -86,7 +86,6 @@ class team:
             self.patient_list = []
             self.patients_no_team = []
             self.teams = ["placeholder"] #first index is used so indexes can match the team number
-            
         #check patient in 
         #check pation out
         #swap nurses between teams
