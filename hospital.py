@@ -30,18 +30,30 @@ class team:
         try:
             return self.nurse_team[__key]
         except KeyError:
-            return KeyError("Invalid key: nurse not found")
-    
+            return "Invalid key: nurse not found"
+
+    # this method will not be used but i am implementing it for learning purposes
+    def __setitem__(self, __key, __value):
+        self.nurse_team[__key] = __value
+
+    #use del to delete a nurse from team
+    def __delitem__(self, __key):
+        print("calling __delitem__")
+        try:
+            return self.nurse_team.pop(__key)
+        except KeyError:
+            raise "Nurse not found."
+
     def __len__(self):
         return len(self.nurse_team)
-    
+
     def __iter__(self):
-        #experiment with this method
-        return iter(self.nurse_team.keys())
+        return iter(self.nurse_team)
 
     def add_nurse(self, new_nurse):
         self.nurse_team[new_nurse.id] = new_nurse
 
+    #removes a nurse from team
     def pop_nurse(self, __nurse_id):
         try:
             return self.nurse_team.pop(__nurse_id)
@@ -51,21 +63,23 @@ class team:
     def get_team_specialty(self):
         return self.my_doctor.specialty
 
-    def get_nurse(self, __nurse_id):
+    #uses a nurse id to return a specific nurse
+    def get_nurse(self, __key):
         try:
-            return self.nurse_team[__nurse_id]
+            return self.nurse_team[__key]
         except KeyError:
             return "Nurse not found."
 
+    #prints all nurses from team w/ more detail
     def get_detailed_info(self):
         s = []
         border = "{:->20}".format("")
         s += ["DOCTOR:", str(self.my_doctor), border, "NURSE(s):"]
         for n in self.nurse_team:
             s += [str(self.nurse_team[n])]
-        
+
         return "\n".join(s)
-    
+
     class hospital:
         """represents a hospital"""
 
