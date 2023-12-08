@@ -91,7 +91,7 @@ def combine_elements(*argv):
 class hospital:
     """represents a hospital"""
     def __init__(self) -> None:
-        self.patient_team_list = []
+        self.patient_team_pairs = []
 
         self.patient_list = []
         self.team_list = [] 
@@ -123,8 +123,8 @@ class hospital:
             self.reserve_nurses = __nurses.copy()
             __nurses.clear()
 
-    def read_patient_list(self):
-        pass
+    def read_patient_list(self, patient_list):
+        self.patient_list = patient_list.copy()
             
     # check patient in
     def patient_check_in(self, __new_patient):
