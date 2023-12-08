@@ -1,4 +1,4 @@
-from hospital import team
+from hospital import team, hospital
 from people import patient, doctor, nurse
 
 
@@ -61,13 +61,16 @@ def group_nurses(nurse_list):
     return grouped_list, rem_list
 
 
-files = ("doctors.txt", "nurses.txt", "patients.txt")
-doctor_list, nurse_list, patient_list = create_lists(files)
+if __name__ == "__main__":
+    files = ("doctors.txt", "nurses.txt", "patients.txt")
+    doctor_list, nurse_list, patient_list = create_lists(files)
 
-nurse_obj_list, remaining_nurses = group_nurses(nurse_list)
-for _ in nurse_obj_list:
-    print(_)
-# t1 = team(doctor_list[0], nurse_obj_list[:3])
+    nurse_group_list, remaining_nurses = group_nurses(nurse_list)
+
+    h1 = hospital()
+    h1.create_team(doctor_list[0], nurse_group_list[0])
+
+    
 
 # loop thru nurse_obj_list and doctor list
 # create a team obj consisting of 1 doctor and 3 nurses

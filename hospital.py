@@ -36,7 +36,7 @@ class team:
     def __setitem__(self, __key, __value):
         self.nurse_team[__key] = __value
 
-    #use del to delete a nurse from team
+    # use del to delete a nurse from team
     def __delitem__(self, __key):
         print("calling __delitem__")
         try:
@@ -53,7 +53,7 @@ class team:
     def add_nurse(self, new_nurse):
         self.nurse_team[new_nurse.id] = new_nurse
 
-    #removes a nurse from team
+    # removes a nurse from team
     def pop_nurse(self, __nurse_id):
         try:
             return self.nurse_team.pop(__nurse_id)
@@ -63,14 +63,14 @@ class team:
     def get_team_specialty(self):
         return self.my_doctor.specialty
 
-    #uses a nurse id to return a specific nurse
+    # uses a nurse id to return a specific nurse
     def get_nurse(self, __key):
         try:
             return self.nurse_team[__key]
         except KeyError:
             return "Nurse not found."
 
-    #prints all nurses from team w/ more detail
+    # prints all nurses from team w/ more detail
     def get_detailed_info(self):
         s = []
         border = "{:->20}".format("")
@@ -80,17 +80,31 @@ class team:
 
         return "\n".join(s)
 
-    class hospital:
-        """represents a hospital"""
-        def __init__(self) -> None:
-            self.patient_list = []
-            self.patients_no_team = []
-            self.teams = ["placeholder"] #first index is used so indexes can match the team number
-        #check patient in 
-        #check pation out
-        #swap nurses between teams
-        #list of nurses w/o team
-        #print patient info 
-        #print team associated with patient
+class hospital:
+    """represents a hospital"""
+    def __init__(self) -> None:
+        self.patient_list = []
+        self.patients_unassigned = []
+        self.team_list = [] 
 
-        pass
+    #TODO edit this method
+    def create_team(self, __doctor, __nurses):
+        self.team_list += [team(__doctor, __nurses)]
+        
+    # check patient in
+    def patient_check_in(self, __new_patient):
+        self.patient_list += [__new_patient]
+
+    # check patient out
+    def patient_check_out(self, __full_name):
+        num_patients = len(self.patient_list)
+        for i in num_patients:
+            if self.patient_list[i].full_name == __full_name:
+                return self.patient_list.pop(i)
+        
+        return -1
+
+    # swap nurses between teams
+    # list of nurses w/o team
+    # print patient info
+    # print team associated with patient
