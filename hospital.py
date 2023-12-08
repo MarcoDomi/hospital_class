@@ -122,6 +122,9 @@ class hospital:
         elif len(__nurses) > 0:
             self.reserve_nurses = __nurses.copy()
             __nurses.clear()
+
+    def read_patient_list(self):
+        pass
             
     # check patient in
     def patient_check_in(self, __new_patient):
