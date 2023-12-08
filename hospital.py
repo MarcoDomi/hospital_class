@@ -80,15 +80,26 @@ class team:
 
         return "\n".join(s)
 
+def combine_elements(*argv):
+    whole_list = []
+
+    for a in argv:
+        whole_list += a
+    
+    return whole_list
+
 class hospital:
     """represents a hospital"""
     def __init__(self) -> None:
+        self.patient_team_list = []
+
         self.patient_list = []
-        self.patients_unassigned = []
         self.team_list = [] 
+        self.reserve_nurses = []
+        self.reserve_doctors = []
 
     #TODO edit this method
-    def create_team(self, __doctor, __nurses, __extra_nurses):
+    def create_teams(self, __doctor, __nurses, __extra_nurses):
         medical_pairs = list(zip(__doctor, __nurses))
         remove_items = len(medical_pairs)
         __doctor = __doctor[remove_items:]
@@ -97,10 +108,21 @@ class hospital:
         for pair in medical_pairs:
             self.team_list += [team(*pair)]
         
-        
-        
-        #self.team_list += [team(__doctor, __nurses)]
-        
+        if len(__doctor) > 0 and len(__extra_nurses) > 0:
+            self.team_list += [team(__doctor[0], __extra_nurses)]
+            __doctor.remove(__doctor[0])
+        elif len(__extra_nurses) > 0:
+            self.reserve_nurses = __extra_nurses.copy()
+
+        __extra_nurses.clear()
+
+        if len(__doctor) > 0:
+            self.reserve_doctors = __doctor.copy()
+            __doctor.clear()
+        elif len(__nurses) > 0:
+            self.reserve_nurses = __nurses.copy()
+            __nurses.clear()
+            
     # check patient in
     def patient_check_in(self, __new_patient):
         self.patient_list += [__new_patient]
