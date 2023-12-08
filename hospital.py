@@ -88,8 +88,18 @@ class hospital:
         self.team_list = [] 
 
     #TODO edit this method
-    def create_team(self, __doctor, __nurses):
-        self.team_list += [team(__doctor, __nurses)]
+    def create_team(self, __doctor, __nurses, __extra_nurses):
+        medical_pairs = list(zip(__doctor, __nurses))
+        remove_items = len(medical_pairs)
+        __doctor = __doctor[remove_items:]
+        __nurses = __nurses[remove_items:]
+
+        for pair in medical_pairs:
+            self.team_list += [team(*pair)]
+        
+        
+        
+        #self.team_list += [team(__doctor, __nurses)]
         
     # check patient in
     def patient_check_in(self, __new_patient):

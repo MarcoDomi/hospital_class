@@ -68,7 +68,8 @@ if __name__ == "__main__":
     nurse_group_list, remaining_nurses = group_nurses(nurse_list)
 
     h1 = hospital()
-    h1.create_team(doctor_list[0], nurse_group_list[0])
+    h1.create_team(doctor_list, nurse_group_list, remaining_nurses)
+    print(h1.team_list)
 
     
 
