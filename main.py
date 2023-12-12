@@ -70,10 +70,8 @@ if __name__ == "__main__":
     h1 = hospital()
     h1.create_teams(doctor_list, nurse_group_list, remaining_nurses)
     h1.read_patient_list(patient_list)
-
-    print(len(h1.patient_list))
-
-
+    h1.pair()
+   
 # loop thru nurse_obj_list and doctor list
 # create a team obj consisting of 1 doctor and 3 nurses
 # loop thru remaing_nurses list if length is not 0

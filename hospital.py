@@ -94,7 +94,7 @@ class hospital:
         self.patient_team_pairs = []
 
         self.patient_list = []
-        self.team_list = [] 
+        self.team_list = []
         self.reserve_nurses = []
         self.reserve_doctors = []
 
@@ -138,6 +138,14 @@ class hospital:
                 return self.patient_list.pop(i)
         
         return -1
+    
+    def pair(self):
+        for p in self.patient_list:
+            for t in self.team_list:
+                if p.ailment == t.get_team_specialty():
+                    self.patient_team_pairs += [(p, t)]
+                   
+
 
     # swap nurses between teams
     # list of nurses w/o team
