@@ -4,12 +4,17 @@ from people import patient, doctor, nurse
 
 def get_file_content(file_name):
     content_list = []
-    file_content = open(f"txt_files/{file_name}", "rt")
-    for line in file_content:
+    file = open(f"txt_files/{file_name}", "rt")
+    file_content = file.readlines()
+    file.close()
+    
+    for line in file_content[:-1]:
         line_list = line[:-1].split(" ")
         content_list += [line_list]
+   
+    last_line = file_content[-1:][0].split(" ")
+    content_list += [last_line]
 
-    file_content.close()
     return content_list
 
 
@@ -71,6 +76,9 @@ if __name__ == "__main__":
     h1.create_teams(doctor_list, nurse_group_list, remaining_nurses)
     h1.read_patient_list(patient_list)
     h1.pair()
+
+    
+    print(len(h1.patient_team_pairs))
    
 # loop thru nurse_obj_list and doctor list
 # create a team obj consisting of 1 doctor and 3 nurses

@@ -96,7 +96,7 @@ class hospital:
         self.patient_list = []
         self.team_list = []
         self.reserve_nurses = []
-        self.reserve_doctors = []
+        self.extra_doctors = []
 
     #TODO edit this method
     def create_teams(self, __doctor, __nurses, __extra_nurses):
@@ -117,7 +117,7 @@ class hospital:
         __extra_nurses.clear()
 
         if len(__doctor) > 0:
-            self.reserve_doctors = __doctor.copy()
+            self.extra_doctors = __doctor.copy()
             __doctor.clear()
         elif len(__nurses) > 0:
             self.reserve_nurses = __nurses.copy()
