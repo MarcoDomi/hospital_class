@@ -78,7 +78,8 @@ if __name__ == "__main__":
     h1.pair()
 
     
-    print(len(h1.patient_team_pairs))
+    for i in h1.team_list:
+        print(i)
    
 # loop thru nurse_obj_list and doctor list
 # create a team obj consisting of 1 doctor and 3 nurses

@@ -144,6 +144,8 @@ class hospital:
             for t in self.team_list:
                 if p.ailment == t.get_team_specialty():
                     self.patient_team_pairs += [(p, t)]
+                    self.team_list.remove(t)
+                    
                    
 
 
